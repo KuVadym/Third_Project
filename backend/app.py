@@ -1,10 +1,12 @@
 import uvicorn
-from fastapi import FastAPI
+from fastapi import FastAPI, UploadFile, File
 from services.Prediction_Services import image_classify
 from services.ModelServices import model_loader
     
-MODEL = model_loader([r'C:\Users\kuzik\Desktop\project3\models\model_from_Susana_v4.h5', 
-                     r'C:\Users\kuzik\Desktop\project3\models\weights_from_Susana_v4.h5'])
+
+model_path_checkpoint = "utils\model_from_Susana_v4.h5"
+
+MODEL = model_loader(model_path_checkpoint)
 
 app = FastAPI()
 
@@ -14,9 +16,10 @@ async def index():
 
 
 @app.post("/")
-async def index(img_path):
+async def index(file: UploadFile = File(...)):
     model = MODEL
-    pred = image_classify(img_path, model)
+    file = await file.read()
+    pred = image_classify(file, model)
     
     return pred
 

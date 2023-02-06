@@ -1,4 +1,6 @@
-backend/__pycache__/
+backend/utils/
+
+backend/__pycache__/extensions
 backend/*.py[cod]
 backend/*$py.class
 
