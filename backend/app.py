@@ -1,7 +1,8 @@
 import uvicorn
-from fastapi import FastAPI, UploadFile, File
+from fastapi import FastAPI, UploadFile, File, Request
 from services.Prediction_Services import image_classify
 from services.ModelServices import model_loader
+import pickle
     
 
 model_path_checkpoint = "utils\model_from_Susana_v4.h5"
@@ -16,11 +17,11 @@ async def index():
 
 
 @app.post("/")
-async def index(file: UploadFile = File(...)):
+async def index(file: bytes = File()):
     model = MODEL
-    file = await file.read()
+    # file = await file.read()
     pred = image_classify(file, model)
-    
+
     return pred
 
 # uvicorn app:app --reload
