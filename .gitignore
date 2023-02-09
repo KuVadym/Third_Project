@@ -138,3 +138,5 @@ backend/cython_debug/
 backend/.idea/
 
 backend/.vscode
+.vscode
+.gitignore
