@@ -1,6 +1,6 @@
 backend/utils/
 backend/__pycache__
-backend/__pycache__/extensions
+backend/services/__pycache__
 backend/*.py[cod]
 backend/*$py.class
 
@@ -136,3 +136,7 @@ backend/.pytype/
 backend/cython_debug/
 
 backend/.idea/
+
+backend/.vscode
+.vscode
+.gitignore
