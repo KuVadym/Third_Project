@@ -1,0 +1,10 @@
+.section {
+  margin: auto 0 100px 0;
+}
+.overlay {
+  width: calc(100% - 20px);
+  top: 10px;
+  height: calc(100% - 10px);
+  left: 50%;
+  transform: translateX(-50%);
+}
