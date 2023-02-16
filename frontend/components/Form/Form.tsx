@@ -29,11 +29,25 @@ export default function Form() {
     </div>
   ));
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    let formdata = new FormData();
-    const urlImg = Boolean(files?.length) ? files[0] : "";
-    formdata.append("file", urlImg, "1629834748499 (1).jpg");
+    let headersList = {
+      Accept: "*/*",
+      "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+    };
+
+    let bodyContent = new FormData();
+    bodyContent.append("file", files[0], "Test");
+
+    let response = await fetch("http://localhost:8000/", {
+      method: "POST",
+      body: bodyContent,
+      headers: headersList,
+      mode: "no-cors",
+    });
+    console.log(response);
+    let data = await response.text();
+    console.log(data);
   };
 
   return (

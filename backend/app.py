@@ -1,16 +1,16 @@
 import uvicorn
-from fastapi import FastAPI, File
+from fastapi import FastAPI, File ,Response
 from fastapi import Header, HTTPException
 from services.Prediction_Services import image_classify
 from services.ModelServices import model_loader
 from services.errmsg import errmsg
 import pickle
-    
+import json
 
 model_path_checkpoint = "utils\model_from_Susana_v4.h5"
 
-# MODEL = model_loader(model_path_checkpoint)
-MODEL = ''
+MODEL = model_loader(model_path_checkpoint)
+
 
 app = FastAPI()
 
@@ -28,11 +28,11 @@ async def index(file: bytes = File()):
     # file = await file.read()
     pred = image_classify(file, model)
                     
-    return pred
+    return Response(status_code=200,content=json.dumps(pred))
 
 # uvicorn app:app --reload
 
-if __name__ == "__main__":
+if __name__ == "__main__":  
     config = uvicorn.Config("app:app", 
                             port=8000, 
                             log_level="info", 

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 import styles from "./styles.module.css";
-import { FaEnvelope, FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaEnvelope, FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa";
 
 const Team = () => {
   const cardRef = useRef(null);
@@ -30,7 +30,7 @@ const Team = () => {
             className={`overlay  absolute bg-indigo-400 bg-opacity-0 group-hover:bg-opacity-70 grid place-items-center transition-colors ease-in delay-100`}
           >
             <ul className="list opacity-0 transition transition-opacity group-hover:opacity-100 ease-in-out delay-150 flex flex-wrap gap-1 text-xl place-items-center transform rotate-45">
-              <li className="w-11 h-11 bg-gray-700 flex items-center justify-center cursor-pointer hover:bg-gray-600">
+              <li className="w-11 h-11 bg-gray-700 flex items-center justify-center cursor-pointer  hover:bg-gray-600">
                 <a href="#">
                   <FaFacebook color="white" />
                 </a>
@@ -47,7 +47,7 @@ const Team = () => {
               </li>
               <li className="w-11 h-11 bg-gray-700 flex items-center justify-center cursor-pointer hover:bg-gray-600">
                 <a href="#">
-                  <FaTwitter color="white" />
+                  <FaGithub color="white" />
                 </a>
               </li>
             </ul>
@@ -58,12 +58,6 @@ const Team = () => {
           <span className="text-gray-500 capitalize inline-block mt-1 mb-4">
             Programmer
           </span>
-          <p className="text-gray-500">
-            Email:{" "}
-            <a href="#" className="font-medium group-hover:text-gray-800">
-              brooks.evan@gmail.com
-            </a>
-          </p>
         </div>
       </div>
     ));
