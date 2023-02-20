@@ -62,3 +62,31 @@
   align-items: center;
   justify-content: center;
 }
+
+.resultContainer {
+  display: flex;
+  gap: 16px;
+}
+
+.listResult {
+  display: flex;
+  width: 100%;
+  min-width: 350px;
+  /* flex-direction: column; */
+  gap: 24px;
+  color: #fff;
+}
+
+.listResultItem {
+  display: flex;
+  flex-direction: column;
+
+  color: #fff;
+  width: 100%;
+}
+
+.flexWrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+}
