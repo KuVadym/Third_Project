@@ -39,12 +39,15 @@ export default function Form() {
     let bodyContent = new FormData();
     bodyContent.append("file", files[0], "Test");
 
-    let response = await fetch("http://localhost:8000/", {
+
+    let response = await fetch("http://localhost:8000/", 
+    {
       method: "POST",
       body: bodyContent,
       headers: headersList,
-      mode: "no-cors",
-    });
+      // mode: "no-cors",
+    }
+    );
     console.log(response);
     let data = await response.text();
     console.log(data);
