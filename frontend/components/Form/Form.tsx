@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from "react";
 import Dropzone from "react-dropzone";
 import styles from "./styles.module.css";
-import { Formik } from "formik";
 import Image from "next/image";
+
+type itemType = [
+  {
+    key: string;
+    value: string;
+  }
+];
 
 export default function Form() {
   const [files, setFiles] = useState<any>([]);
-  const [filesBinary, setFilesBinary] = useState([]);
   const [showFileSizeError, setShowFileSizeError] = useState(false);
-
+  const [data, setData] = useState<any>([]);
   useEffect(() => {
     // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
     return () =>
@@ -39,19 +44,50 @@ export default function Form() {
     let bodyContent = new FormData();
     bodyContent.append("file", files[0], "Test");
 
-
-    let response = await fetch("http://localhost:8000/", 
-    {
+    let response = await fetch("http://localhost:8000/", {
       method: "POST",
       body: bodyContent,
       headers: headersList,
-      // mode: "no-cors",
-    }
-    );
+    });
     console.log(response);
     let data = await response.text();
-    console.log(data);
+    setData(JSON.parse(data));
   };
+  const color = ["orange", "green", "blue"];
+  const renderData = (item: itemType) =>
+    item.map(({ key, value }, i) => (
+      <div key={`${key}-${value}`} className={styles.listResultItem}>
+        <h3 className="capitalize font-mono">{key}</h3>
+        <div className={styles.flexWrapper}>
+          <div className="single-chart">
+            <svg viewBox="0 0 36 36" className={`circular-chart ${color[i]}`}>
+              <path
+                className="circle-bg"
+                d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+              />
+              <path
+                className="circle"
+                stroke-dasharray={`${Math.round(
+                  Math.ceil(Number(value))
+                )}, 100`}
+                d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831"
+              />
+              <text
+                x="18"
+                y="20.35"
+                className="percentage capitalize text-white"
+              >
+                {Math.round(Number(value))}%
+              </text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    ));
 
   return (
     <form action="post" onSubmit={handleSubmit} className={styles.form}>
@@ -67,23 +103,6 @@ export default function Form() {
         }}
         onDrop={(acceptedFiles) => {
           setShowFileSizeError(false);
-          if (files.length >= 8) return;
-          // acceptedFiles.map((file, index) => {
-          //   const reader = new FileReader();
-          //   reader.onload = function (e) {
-          //     setFilesBinary(() => {
-          //       return [
-          //         {
-          //           id: index,
-          //           src: e.target.result,
-          //           fileName: file.name.replace(/\s/g, ""),
-          //         },
-          //       ];
-          //     });
-          //   };
-          //   reader.readAsArrayBuffer(file);
-          //   return file;
-          // });
           const newF = acceptedFiles.map((file) =>
             Object.assign(file, {
               preview: URL.createObjectURL(file),
@@ -130,7 +149,15 @@ export default function Form() {
         )}
       </Dropzone>
       {Boolean(files?.length) ? (
-        <aside className={styles.thumbsContainer}>{thumbs}</aside>
+        <div className={styles.resultContainer}>
+          <aside className={styles.thumbsContainer}>{thumbs}</aside>
+          {Boolean(data?.length) && (
+            <>
+              {/* <div className="text-white">Result:</div> */}
+              <div className={styles.listResult}>{renderData(data)}</div>
+            </>
+          )}
+        </div>
       ) : (
         <div className={styles.empty}>
           <p>No pictures or images have been added yet</p>
