@@ -3,7 +3,16 @@ import React, { useEffect, useRef } from "react";
 import styles from "./styles.module.css";
 import { FaEnvelope, FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa";
 
-const teamList = [
+type itemsType = {
+  imageUrl: string;
+  name: string;
+  position: string;
+  linkedin: string;
+  github: string;
+  mail: string;
+};
+
+const teamList: itemsType[] = [
   {
     imageUrl:
       "https://media.licdn.com/dms/image/C4E03AQGINEQf1ghmpA/profile-displayphoto-shrink_800_800/0/1663341667758?e=1682553600&v=beta&t=sbJcjtDMdXDIEtSsYKXVT5vMOJzNwTC2z8Pw05Zoqok",
@@ -32,10 +41,11 @@ const teamList = [
     mail: "vladyslav.shumkov@gmail.com",
   },
 ];
+
 const Team = () => {
   const cardRef = useRef(null);
 
-  const renderArticles = (items: any) =>
+  const renderArticles = (items: itemsType[]) =>
     items.map(({ imageUrl, name, position, linkedin, github, mail }, idx) => (
       <div
         key={`${idx}-t-${name}`}
