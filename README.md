@@ -1,6 +1,6 @@
-<!— GETTING STARTED -->
+<!-- GETTING STARTED -->
 
-<h2 id="getting started"> :scroll Getting Started </h2>
+<h2 id="getting started"> :cmd: Getting Started </h2>
 
 For starting this application in your PC you have to download and install Python3.10 and Node
 
@@ -80,9 +80,9 @@ Create folder utils and put there your model -->
 
  
 
-<!—TECHNOLOGIES-->
+<!-- TECHNOLOGIES-->
 
-<h2 id="technologies"> :scroll Technologies</h2>
+<h2 id="technologies"> :&#128195: Technologies</h2>
 
 Python 3.10
 
