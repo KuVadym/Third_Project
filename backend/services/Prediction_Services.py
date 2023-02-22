@@ -25,7 +25,7 @@ def image_classify(img, model):
         for i in range(top_num):
             pred = np.argmax(features_request)
             top.append({'key':classes_request[pred], 
-                       'value':str(round(float(features_request[np.argmax(features_request)]), 4)*100)})
+                       'value':str(features_request[np.argmax(features_request)]*100)[0:5]})
             if top_num > 1:
                 features_request = np.delete(features_request, np.argmax(features_request))
                 classes_request.remove(classes_request[pred])

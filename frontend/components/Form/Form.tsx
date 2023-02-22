@@ -81,7 +81,8 @@ export default function Form() {
                 y="20.35"
                 className="percentage capitalize text-white"
               >
-                {Math.round(Number(value))}%
+                {/* {Math.round(Number(value))}% */}
+                {Number(value)}%
               </text>
             </svg>
           </div>
