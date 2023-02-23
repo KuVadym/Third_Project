@@ -1,18 +1,18 @@
-<!— GETTING STARTED -->
+<!-- GETTING STARTED -->
 
-<h2 id="getting started"> :scroll Getting Started </h2>
+<h2 id="getting started"> :cmd: Getting Started </h2>
 
 For starting this application in your PC you have to download and install Python3.10 and Node
 
-<a href=" https://www.python.org/downloads/">@ Python </a>
+[https://www.python.org/downloads/](Python)
 
-<a href=" https://nodejs.dev/en/download/">@ Node </a>
+[https://nodejs.dev/en/download/](Node)
 
  
 
 1. Create virtual environments
 
-Change ```zsh path\to\your\environment\folder ``` on your own path.
+Change ``` path\to\your\environment\folder ``` to your own path.
 
 ```zsh
 
@@ -20,7 +20,7 @@ Python -m venv path\to\your\environment\folder
 
 ```
 
-Example: ```zsh C:\Users\bestuser\Desktop\thisapp\backend\venv```
+Example: ``` C:\Users\bestuser\Desktop\thisapp\backend\venv```
 
 2. Activate virtual environment
 
@@ -48,7 +48,7 @@ pip install -r requirements.txt develop –no-deps
 
 ```zsh
 
-python main.py
+python app.py
 
 ```
 
@@ -69,6 +69,7 @@ npm i build
 npm run dev
 
 ```
+7. Open application in your browser [http://localhost:3000](http://localhost:3000)
 
 <!-- Optional settings-->
 
@@ -80,9 +81,9 @@ Create folder utils and put there your model -->
 
  
 
-<!—TECHNOLOGIES-->
+<!-- TECHNOLOGIES-->
 
-<h2 id="technologies"> :scroll Technologies</h2>
+<h2 id="technologies"> :&#128195: Technologies</h2>
 
 Python 3.10
 

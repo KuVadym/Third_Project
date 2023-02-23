@@ -12,7 +12,7 @@ import json
 
 origins = ["http://localhost:3000", "http://127.0.0.1:3000"]
 
-model_path_checkpoint = "utils\model_from_Susana_v4.h5"
+model_path_checkpoint = "utils\model.h5"
 
 MODEL = model_loader(model_path_checkpoint)
 
