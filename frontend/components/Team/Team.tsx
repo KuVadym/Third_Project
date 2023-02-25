@@ -33,7 +33,7 @@ const teamList: itemsType[] = [
   },
   {
     imageUrl:
-      "https://media.licdn.com/dms/image/D4E03AQH4XU8nALqOEg/profile-displayphoto-shrink_800_800/0/1629834748499?e=1682553600&v=beta&t=lOE9JGY-0EB0XS9eEGEGvLxeyKvAi6KkNhZw5qbeYl4",
+      "https://media.licdn.com/dms/image/D4D03AQG_EhNJ5k5txQ/profile-displayphoto-shrink_400_400/0/1677053436641?e=1682553600&v=beta&t=rEMLritsy0gXcZW3wgwYk7KLZNS7wddfb5QU8rpjfgA",
     name: "Vladyslav Shumkov",
     position: "Front End",
     linkedin: "https://www.linkedin.com/in/vladyslav-shumkov/",
