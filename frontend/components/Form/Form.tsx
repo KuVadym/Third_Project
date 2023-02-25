@@ -14,6 +14,7 @@ export default function Form() {
   const [files, setFiles] = useState<any>([]);
   const [showFileSizeError, setShowFileSizeError] = useState(false);
   const [data, setData] = useState<any>([]);
+  const [isSame, setIsSame] = useState(false);
   useEffect(() => {
     // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
     return () =>
@@ -49,46 +50,50 @@ export default function Form() {
       body: bodyContent,
       headers: headersList,
     });
-    console.log(response);
+
     let data = await response.text();
     setData(JSON.parse(data));
+    setIsSame(true);
   };
   const color = ["orange", "green", "blue"];
+
   const renderData = (item: itemType) =>
-    item.map(({ key, value }, i) => (
-      <div key={`${key}-${value}`} className={styles.listResultItem}>
-        <h3 className="capitalize font-mono">{key}</h3>
-        <div className={styles.flexWrapper}>
-          <div className="single-chart">
-            <svg viewBox="0 0 36 36" className={`circular-chart ${color[i]}`}>
-              <path
-                className="circle-bg"
-                d="M18 2.0845
+    item.map(({ key, value }, i) => {
+      // if (Number(value) < 75) return;
+      return (
+        <div key={`${key}-${value}`} className={styles.listResultItem}>
+          <h3 className="capitalize font-mono">{key}</h3>
+          <div className={styles.flexWrapper}>
+            <div className="single-chart">
+              <svg viewBox="0 0 36 36" className={`circular-chart ${color[i]}`}>
+                <path
+                  className="circle-bg"
+                  d="M18 2.0845
           a 15.9155 15.9155 0 0 1 0 31.831
           a 15.9155 15.9155 0 0 1 0 -31.831"
-              />
-              <path
-                className="circle"
-                stroke-dasharray={`${Math.round(
-                  Math.ceil(Number(value))
-                )}, 100`}
-                d="M18 2.0845
+                />
+                <path
+                  className="circle"
+                  strokeDasharray={`${Math.round(
+                    Math.ceil(Number(value))
+                  )}, 100`}
+                  d="M18 2.0845
           a 15.9155 15.9155 0 0 1 0 31.831
           a 15.9155 15.9155 0 0 1 0 -31.831"
-              />
-              <text
-                x="18"
-                y="20.35"
-                className="percentage capitalize text-white"
-              >
-                {/* {Math.round(Number(value))}% */}
-                {Number(value)}%
-              </text>
-            </svg>
+                />
+                <text
+                  x="18"
+                  y="20.35"
+                  className="percentage capitalize text-white"
+                >
+                  {Math.round(Number(value))}%
+                </text>
+              </svg>
+            </div>
           </div>
         </div>
-      </div>
-    ));
+      );
+    });
 
   return (
     <form action="post" onSubmit={handleSubmit} className={styles.form}>
@@ -104,6 +109,7 @@ export default function Form() {
         }}
         onDrop={(acceptedFiles) => {
           setShowFileSizeError(false);
+          setIsSame(false);
           const newF = acceptedFiles.map((file) =>
             Object.assign(file, {
               preview: URL.createObjectURL(file),
@@ -153,10 +159,7 @@ export default function Form() {
         <div className={styles.resultContainer}>
           <aside className={styles.thumbsContainer}>{thumbs}</aside>
           {Boolean(data?.length) && (
-            <>
-              {/* <div className="text-white">Result:</div> */}
-              <div className={styles.listResult}>{renderData(data)}</div>
-            </>
+            <div className={styles.listResult}>{renderData(data)}</div>
           )}
         </div>
       ) : (
@@ -165,7 +168,10 @@ export default function Form() {
         </div>
       )}
       <div className="flex justify-center">
-        <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+        <button
+          disabled={Boolean(!files?.length) || isSame}
+          className="bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center focus:outline-none disabled:opacity-50"
+        >
           <svg
             className="fill-current w-4 h-4 mr-2"
             xmlns="http://www.w3.org/2000/svg"
