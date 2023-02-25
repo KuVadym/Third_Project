@@ -260,28 +260,9 @@ export default function Home() {
         <div className="scrollElement">
           <div className={styles.container}>
             <div className={styles.titleContainer}>
-              {/* <svg viewBox="0 0 960 300" className={styles.svg}>
-                <symbol id="s-text">
-                  <text text-anchor="middle" x="50%" y="80%">
-                    Carpen Diem{" "}
-                  </text>
-                  <text text-anchor="middle" x="52%" y="80%">
-                    Carpen Diem{" "}
-                  </text>
-                </symbol>
-
-                <g className="g-ants">
-                  <use xlinkHref="#s-text" className={styles.textCopy}></use>
-                  <use xlinkHref="#s-text" className={styles.textCopy}></use>
-                  <use xlinkHref="#s-text" className={styles.textCopy}></use>
-                  <use xlinkHref="#s-text" className={styles.textCopy}></use>
-                  <use xlinkHref="#s-text" className={styles.textCopy}></use>
-                </g>
-              </svg> */}
-              <div className={styles.contentText}>
-                <h2>Kemi</h2>
-                <h2>Kemi</h2>
-              </div>
+              <h2 className="bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent text-5xl font-black">
+                Catch the moment
+              </h2>
             </div>
             <div className={styles.wrappIcon}>
               <svg
