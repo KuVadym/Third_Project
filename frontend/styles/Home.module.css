@@ -335,3 +335,9 @@
     width: 90%;
   }
 }
+.svgGit {
+  margin: 0 20px 0 auto;
+}
+.svgGit:hover > path {
+  fill: #000;
+}
