@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Dropzone from "react-dropzone";
 import styles from "./styles.module.css";
 import Image from "next/image";
+import { Loader } from "../Loader/Loader";
 
 type itemType = [
   {
@@ -15,6 +16,7 @@ export default function Form() {
   const [showFileSizeError, setShowFileSizeError] = useState(false);
   const [data, setData] = useState<any>([]);
   const [isSame, setIsSame] = useState(false);
+  const [state, setState] = useState("idle");
   useEffect(() => {
     // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
     return () =>
@@ -37,23 +39,29 @@ export default function Form() {
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    let headersList = {
-      Accept: "*/*",
-      "User-Agent": "Thunder Client (https://www.thunderclient.com)",
-    };
+    try {
+      setState("loading");
+      let headersList = {
+        Accept: "*/*",
+        "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+      };
 
-    let bodyContent = new FormData();
-    bodyContent.append("file", files[0], "Test");
+      let bodyContent = new FormData();
+      bodyContent.append("file", files[0], "Test");
 
-    let response = await fetch("http://localhost:8000/", {
-      method: "POST",
-      body: bodyContent,
-      headers: headersList,
-    });
+      let response = await fetch("http://localhost:8000/", {
+        method: "POST",
+        body: bodyContent,
+        headers: headersList,
+      });
 
-    let data = await response.text();
-    setData(JSON.parse(data));
-    setIsSame(true);
+      let data = await response.text();
+      setData(JSON.parse(data));
+      setIsSame(true);
+      setState("success");
+    } catch (error) {
+      setState("error");
+    }
   };
   const color = ["orange", "green", "blue"];
 
@@ -158,9 +166,12 @@ export default function Form() {
       {Boolean(files?.length) ? (
         <div className={styles.resultContainer}>
           <aside className={styles.thumbsContainer}>{thumbs}</aside>
-          {Boolean(data?.length) && (
-            <div className={styles.listResult}>{renderData(data)}</div>
-          )}
+          {Boolean(data?.length) &&
+            (state === "success" ? (
+              <div className={styles.listResult}>{renderData(data)}</div>
+            ) : (
+              <Loader />
+            ))}
         </div>
       ) : (
         <div className={styles.empty}>
