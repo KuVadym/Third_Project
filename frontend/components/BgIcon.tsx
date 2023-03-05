@@ -448,6 +448,7 @@ export default function BgIcon() {
             stroke="#231f20"
             strokeMiterlimit="10"
             strokeWidth="0.5"
+            style={{ display: "none" }}
           >
             <polygon
               id="arrow2"
