@@ -49,7 +49,7 @@ export default function Form() {
       let bodyContent = new FormData();
       bodyContent.append("file", files[0], "Test");
 
-      let response = await fetch("http://52.86.87.7:3000/", {
+      let response = await fetch("http://52.86.87.7:443/", {
         method: "POST",
         body: bodyContent,
         headers: headersList,
