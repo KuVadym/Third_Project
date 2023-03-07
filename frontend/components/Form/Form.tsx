@@ -36,20 +36,20 @@ export default function Form() {
       />
     </div>
   ));
-
   const handleSubmit = async (e: { preventDefault: () => void }) => {
+    const url = `${process.env.NEXT_PUBLIC_REQUEST_URL}`;
+    console.log(url);
     e.preventDefault();
     try {
       setState("loading");
       let headersList = {
         Accept: "*/*",
-        "User-Agent": "Thunder Client (https://www.thunderclient.com)",
       };
 
       let bodyContent = new FormData();
       bodyContent.append("file", files[0], "Test");
 
-      let response = await fetch("http://52.86.87.7:443/", {
+      let response = await fetch(url, {
         method: "POST",
         body: bodyContent,
         headers: headersList,
