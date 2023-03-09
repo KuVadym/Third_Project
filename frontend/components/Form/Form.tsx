@@ -36,14 +36,14 @@ export default function Form() {
       />
     </div>
   ));
-
   const handleSubmit = async (e: { preventDefault: () => void }) => {
+    const url = `${process.env.NEXT_PUBLIC_REQUEST_URL}`;
+    console.log(url);
     e.preventDefault();
     try {
       setState("loading");
       let headersList = {
         Accept: "*/*",
-        "User-Agent": "Thunder Client (https://www.thunderclient.com)",
       };
 
       let bodyContent = new FormData();

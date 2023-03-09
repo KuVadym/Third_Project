@@ -26,7 +26,7 @@ const teamList: itemsType[] = [
   },
   {
     imageUrl:
-      "https://media.licdn.com/dms/image/D4D35AQFEjzQGcfOotQ/profile-framedphoto-shrink_800_800/0/1673097005230?e=1677520800&v=beta&t=Hd5_LZzKNUINtBCA8aAJaek7GXcMZXnRJFbJ8WF2PC4",
+      "https://media.licdn.com/dms/image/D4D35AQFEjzQGcfOotQ/profile-framedphoto-shrink_800_800/0/1673097005230?e=1678816800&v=beta&t=f000NRd4wQwz6dajBGWWXLK01gejpnvolwbbQoexaqs",
     name: "Susanna Salata",
     position: "Scrum master, BA, QA + model",
     linkedin: "https://www.linkedin.com/in/susanna-salata/",
@@ -67,6 +67,7 @@ const Team = () => {
               style={{
                 maxWidth: "100%",
                 height: "auto",
+                maxHeight: "400px",
               }}
               className="w-full object-cover"
             />

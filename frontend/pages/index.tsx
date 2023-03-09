@@ -254,13 +254,16 @@ export default function Home() {
       <Head>
         <title>Catch the moment</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+        <meta
+          http-equiv="Content-Security-Policy"
+          content="upgrade-insecure-requests"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
         <div className="scrollElement">
           <a
-            href="https://github.com/SMARTClash8/team_1"
+            href="https://github.com/KuVadym/Third_Project"
             className="position-fixed top-0 m-4"
             target={"_blank"}
             rel={"noreferrer"}
@@ -283,7 +286,7 @@ export default function Home() {
           </a>
           <div className={styles.container}>
             <div className={styles.titleContainer}>
-              <h2 className="capitalize text-center mb-5 md:mb-10 sm:col-span-2 lg:col-span-4 text-4xl sm:text-5xl xl:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-indigo-600">
+              <h2 className="capitalize text-center mb-5 md:mb-10 sm:col-span-2 lg:col-span-4 text-4xl sm:text-5xl xl:text-6xl font-extrabold text-main">
                 Catch the moment
               </h2>
             </div>
