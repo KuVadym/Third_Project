@@ -49,7 +49,7 @@ export default function Form() {
       let bodyContent = new FormData();
       bodyContent.append("file", files[0], "Test");
 
-      let response = await fetch("http://mlclassify.site:443/", {
+      let response = await fetch("http://mlclassify.site/", {
         method: "POST",
         body: bodyContent,
         headers: headersList,
