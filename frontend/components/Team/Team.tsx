@@ -32,7 +32,7 @@ const teamList: itemsType[] = [
     linkedin: "https://www.linkedin.com/in/susanna-salata/",
     github: "https://github.com/Susanna-Salata",
     mail: "kuzik94vadim@gmail.com",
-    pdf: "",
+    pdf: "https://drive.google.com/file/d/1p27YpG37i3LR2ekawrt3D1iUmRUKuVkW/view?usp=share_link",
   },
   {
     imageUrl:
