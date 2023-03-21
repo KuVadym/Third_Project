@@ -254,10 +254,10 @@ export default function Home() {
       <Head>
         <title>Catch the moment</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta
+<!--         <meta
           http-equiv="Content-Security-Policy"
           content="upgrade-insecure-requests"
-        />
+        /> -->
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
