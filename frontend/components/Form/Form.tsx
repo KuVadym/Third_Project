@@ -3,6 +3,7 @@ import Dropzone from "react-dropzone";
 import styles from "./styles.module.css";
 import Image from "next/image";
 import { Loader } from "../Loader/Loader";
+import axios from "axios";
 
 type itemType = [
   {
@@ -49,13 +50,15 @@ export default function Form() {
       let bodyContent = new FormData();
       bodyContent.append("file", files[0], "Test");
 
-      let response = await fetch("http://mlclassify.site:443/", {
+      let reqOptions = {
+        url: "https://mlclassifyloadbalancer-464964149.us-east-1.elb.amazonaws.com/",
         method: "POST",
-        body: bodyContent,
         headers: headersList,
-      });
+        data: bodyContent,
+      };
 
-      let data = await response.text();
+      let data = await axios.request(reqOptions);
+      console.log(data);
       setData(JSON.parse(data));
       setIsSame(true);
       setState("success");
