@@ -53,7 +53,7 @@ export default function Form() {
         method: "POST",
         body: bodyContent,
         headers: headersList,
-        referrerPolicy: "unsafe_url"
+        referrerPolicy: "unsafe_url",
       });
 
       let data = await response.text();
