@@ -3,8 +3,7 @@ import Dropzone from "react-dropzone";
 import styles from "./styles.module.css";
 import Image from "next/image";
 import { Loader } from "../Loader/Loader";
-const https = require('https');
-const axios = require('axios');
+import axios from "axios";
 
 type itemType = [
   {
@@ -38,17 +37,8 @@ export default function Form() {
       />
     </div>
   ));
-    const instance = axios.create({
-    httpsAgent: new https.Agent({  
-      rejectUnauthorized: false
-    })
-  });
-  const agent = new https.Agent({  
-    rejectUnauthorized: false
-  });
+
   const handleSubmit = async (e: { preventDefault: () => void }) => {
-    const url = `${process.env.NEXT_PUBLIC_REQUEST_URL}`;
-    console.log(url);
     e.preventDefault();
     try {
       setState("loading");
@@ -59,19 +49,16 @@ export default function Form() {
       let bodyContent = new FormData();
       bodyContent.append("file", files[0], "Test");
 
-      const https = require("https");
-      const agent = new https.Agent({
-        rejectUnauthorized: false
-      })
-      let response = await axios("https://mlclassifyloadbalancer-464964149.us-east-1.elb.amazonaws.com/", {
+      let reqOptions = {
+        url: "https://mlclassifyloadbalancer-464964149.us-east-1.elb.amazonaws.com/",
         method: "POST",
-        body: bodyContent,
         headers: headersList,
-        referrerPolicy: "unsafe_url"
-      });
-      
-      let data = await response.text();
-      setData(JSON.parse(data));
+        data: bodyContent,
+      };
+
+      let res = await axios.request(reqOptions);
+
+      setData(res.data);
       setIsSame(true);
       setState("success");
     } catch (error) {
