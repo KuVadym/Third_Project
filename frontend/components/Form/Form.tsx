@@ -37,6 +37,14 @@ export default function Form() {
       />
     </div>
   ));
+  const instance = axios.create({
+    httpsAgent: new https.Agent({
+      rejectUnauthorized: false,
+    }),
+  });
+  const agent = new https.Agent({
+    rejectUnauthorized: false,
+  });
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     try {
