@@ -38,8 +38,6 @@ export default function Form() {
     </div>
   ));
   const handleSubmit = async (e: { preventDefault: () => void }) => {
-    const url = `${process.env.NEXT_PUBLIC_REQUEST_URL}`;
-    console.log(url);
     e.preventDefault();
     try {
       setState("loading");
@@ -57,9 +55,9 @@ export default function Form() {
         data: bodyContent,
       };
 
-      let data = await axios.request(reqOptions);
-      console.log(data);
-      setData(JSON.parse(data));
+      let res = await axios.request(reqOptions);
+
+      setData(res.data);
       setIsSame(true);
       setState("success");
     } catch (error) {
